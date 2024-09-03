@@ -1,12 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Timer from './components/Timer';
+import Form from './components/Form';
 
 function App() {
   return (
     <> 
-      <Navbar />
-      <Timer />
+      <Navbar username="shifa" />
+      <Form />
     </>  
   );
 }
