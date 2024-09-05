@@ -12,18 +12,23 @@ class Form extends Component {
         }
     }
 
+    // username should not be part of password.Ex: username: smith, password: smith123
+    // password must contain a digit
     handleForm = (event) => {
         event.preventDefault();     // to prevent form submission to server script
+        let password = this.state.password;
+        let username = this.state.username;
+        var expression = /\d+/g;
 
         let errors = {};        // create new object to add errors if any
-        if(this.state.username === '') {
-            errors.username = "Username is required";
+        if(this.state.username === '' || password.includes(username)) {
+            errors.username = "Username is required, username should not be a part of password";
         }
         if(this.state.email === '') {
             errors.email = "Email is required";
         }
-        if(this.state.password === '' || this.state.password.length < 8){
-            errors.password = 'Password is required and it should be atleast 8 chars';
+        if(this.state.password === '' || this.state.password.length < 8 || !password.match(expression)){
+            errors.password = 'Password is required and it should be atleast 8 chars and a digit';
         }
 
         this.setState({ errors: errors });   // posting errors object to state object
