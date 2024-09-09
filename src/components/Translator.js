@@ -4,8 +4,8 @@ function Translator() {
     const [sourceLanguage, setSourceLanguage] = useState('en');
     const [targetLanguage, setTargetLanguage] = useState('te');
     const [error, setError] = useState(null);
-    const [translatedText, setTranslatedText] = useState('');
-    const [text, setText] = useState('');
+    const [translatedText, setTranslatedText] = useState(''); // output
+    const [text, setText] = useState(''); // text we enter
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,7 +60,7 @@ function Translator() {
                 <label className='form-label'>Enter text</label>
                 <textarea className='form-control' rows={5} value={text} onChange={(e) => setText(e.target.value)} ></textarea>
 
-                <button className='btn btn-success my-2'>Translate</button>
+                <button type='submit' className='btn btn-success my-2'>Translate</button>
             </form>
             {error && <div className='alert alert-danger'>{error}</div>}
 
