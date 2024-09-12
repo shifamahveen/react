@@ -1,19 +1,16 @@
-import { useState, useMemo, useCallback } from 'react';
 import './App.css';
-import Callback from './components/Callback';
+import useCustom from './components/Custom';
 
+// React Router ->react-router-dom
 const App = () => {
-  const [count, setCount] = useState(0);
-  
-  const func = useCallback(() => { }, []);
+  const [name, setName] = useCustom('username', '');
 
   return (
     <>
-      <Callback func={func} />
-      <button onClick={() => setCount(prev => prev+1)}>Increment</button>
-      <h1>{count}</h1>
+      <input type='text' value={name} 
+      onChange={(e) => setName(e.target.value)} />
+      <h1>{name}</h1>
     </>
   )
 }
-
 export default App;
